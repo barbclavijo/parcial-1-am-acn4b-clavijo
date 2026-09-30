@@ -5,5 +5,7 @@
     <string name="member_name">Mariano Benítez</string>
     <string name="section_activities">Mis Actividades Inscriptas</string>
     <string name="section_events">Próximos Eventos</string>
+    <string name="btn_info_event">+Info</string>
     <string name="btn_join_event">Anotarme</string>
+    <string name="btn_cancelar">Cancelar</string>
 </resources>
