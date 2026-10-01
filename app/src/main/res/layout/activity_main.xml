@@ -21,7 +21,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
+    <ImageView
+        android:id="@+id/iv_profile_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_icon_circle_light"
+        android:padding="7dp"
+        android:src="@drawable/ic_profile"
+        app:tint="@color/white"
+        android:contentDescription="@string/nav_profile"
+        app:layout_constraintTop_toTopOf="@id/tv_header"
+        app:layout_constraintBottom_toBottomOf="@id/tv_header"
+        app:layout_constraintEnd_toEndOf="parent" />
     <!-- vista scrolleable -->
     <ScrollView
         android:layout_width="0dp"
