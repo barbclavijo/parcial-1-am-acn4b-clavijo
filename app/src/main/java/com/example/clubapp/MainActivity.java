@@ -10,23 +10,40 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LinearLayout containerInscripciones;
-    private int contadorInscripciones = 0;
+    private LinearLayout containerRegistrations;
+    private TextView tvEmptyState;
+    private int registrationCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        containerInscripciones = findViewById(R.id.container_inscripciones);
+        containerRegistrations = findViewById(R.id.container_registrations);
+        tvEmptyState = findViewById(R.id.tv_empty_state);
+
+        Button eventButton1 = findViewById(R.id.btn_join_event_1);
+        eventButton1.setOnClickListener(v ->
+                onJoinEventClick(eventButton1, getString(R.string.event_name_1), getString(R.string.event_date_1))
+        );
+
+        Button eventButton2 = findViewById(R.id.btn_join_event_2);
+        eventButton2.setOnClickListener(v ->
+                onJoinEventClick(eventButton2, getString(R.string.event_name_2), getString(R.string.event_date_2))
+        );
     }
 
-    public void onAnotarmeClick(View view) {
-        agregarInscripcionDinamica("Torneo de Pádel", "Sábado 10 Octubre · 15:00");
+    private void onJoinEventClick(Button button, String eventName, String eventDate) {
+        addRegistrationDynamically(eventName, eventDate, button);
+
+        button.setEnabled(false);
+        button.setText(R.string.btn_joined);
+        button.setTextColor(getResources().getColor(R.color.white));
+        button.setBackgroundColor(getResources().getColor(R.color.accent_darker));
     }
 
-    private void agregarInscripcionDinamica(String nombreEvento, String fechaEvento) {
-        contadorInscripciones++;
+    private void addRegistrationDynamically(String eventName, String eventDate, Button eventButton) {
+        registrationCounter++;
 
         LinearLayout card = new LinearLayout(this);
         card.setOrientation(LinearLayout.VERTICAL);
@@ -40,32 +57,52 @@ public class MainActivity extends AppCompatActivity {
         cardParams.setMargins(0, 0, 0, 16);
         card.setLayoutParams(cardParams);
 
-        TextView tvNombre = new TextView(this);
-        tvNombre.setText(nombreEvento);
-        tvNombre.setTextColor(getResources().getColor(R.color.text_primary));
-        tvNombre.setTextSize(16);
-        tvNombre.setTypeface(null, android.graphics.Typeface.BOLD);
+        TextView nameTextView = new TextView(this);
+        nameTextView.setText(eventName);
+        nameTextView.setTextColor(getResources().getColor(R.color.text_primary));
+        nameTextView.setTextSize(16);
+        nameTextView.setTypeface(null, android.graphics.Typeface.BOLD);
 
-        TextView tvFecha = new TextView(this);
-        tvFecha.setText(fechaEvento);
-        tvFecha.setTextColor(getResources().getColor(R.color.text_secondary));
-        tvFecha.setTextSize(14);
+        TextView dateTextView = new TextView(this);
+        dateTextView.setText(eventDate);
+        dateTextView.setTextColor(getResources().getColor(R.color.text_secondary));
+        dateTextView.setTextSize(14);
 
-        TextView tvEstado = new TextView(this);
-        tvEstado.setText("Ticket ID: #PAS-" + (4800 + contadorInscripciones));
-        tvEstado.setTextColor(getResources().getColor(R.color.accent));
-        tvEstado.setTextSize(12);
+        TextView statusTextView = new TextView(this);
+        statusTextView.setText("Ticket ID: #PAS-" + (4800 + registrationCounter));
+        statusTextView.setTextColor(getResources().getColor(R.color.accent_darker));
+        statusTextView.setTextSize(12);
 
-        Button btnBaja = new Button(this);
-        btnBaja.setText(R.string.btn_cancelar);
+        Button cancelButton = new Button(this);
+        cancelButton.setText(R.string.btn_cancel);
         final LinearLayout cardRef = card;
-        btnBaja.setOnClickListener(v -> containerInscripciones.removeView(cardRef));
+        cancelButton.setOnClickListener(v -> {
+            containerRegistrations.removeView(cardRef);
+            updateEmptyState();
+            reactivateEventButton(eventButton);
+        });
 
-        card.addView(tvNombre);
-        card.addView(tvFecha);
-        card.addView(tvEstado);
-        card.addView(btnBaja);
+        card.addView(nameTextView);
+        card.addView(dateTextView);
+        card.addView(statusTextView);
+        card.addView(cancelButton);
 
-        containerInscripciones.addView(card);
+        containerRegistrations.addView(card);
+        updateEmptyState();
+    }
+
+    private void reactivateEventButton(Button button) {
+        button.setEnabled(true);
+        button.setText(R.string.btn_join_event);
+        button.setTextColor(getResources().getColor(R.color.white));
+        button.setBackgroundColor(getResources().getColor(R.color.primary));
+    }
+
+    private void updateEmptyState() {
+        if (containerRegistrations.getChildCount() == 0) {
+            tvEmptyState.setVisibility(View.VISIBLE);
+        } else {
+            tvEmptyState.setVisibility(View.GONE);
+        }
     }
 }

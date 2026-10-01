@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:background="@color/background">
 
-    <!-- Header-->
+    <!-- Header -->
     <TextView
         android:id="@+id/tv_header"
         android:layout_width="0dp"
@@ -31,14 +31,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- LinearLayout vertical -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/spacing_medium">
 
-            <!-- card socio LinearLayout horizontal -->
+            <!-- card socio -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/member_label"
-                        android:textColor="@color/accent"
+                        android:textColor="@color/accent_darker"
                         android:textSize="@dimen/text_body" />
 
                     <TextView
@@ -78,7 +77,6 @@
             </LinearLayout>
 
             <!-- sec actividades -->
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,9 +89,42 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fútbol +30 · Martes y Jueves 20:00"
+                android:text="@string/activity_description"
                 android:textSize="@dimen/text_body"
                 android:textColor="@color/text_secondary"
+                android:layout_marginBottom="@dimen/spacing_medium" />
+
+            <!-- sec mis inscripciones -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/section_my_registrations"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_subtitle"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/spacing_small" />
+
+            <TextView
+                android:id="@+id/tv_empty_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_registrations"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body"
+                android:layout_marginBottom="@dimen/spacing_medium" />
+
+            <!-- agrega las inscripciones dinamicamente -->
+            <LinearLayout
+                android:id="@+id/container_registrations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/spacing_medium" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/text_secondary"
                 android:layout_marginBottom="@dimen/spacing_medium" />
 
             <!-- sec prox eventos -->
@@ -106,7 +137,7 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="@dimen/spacing_small" />
 
-            <!-- card del evento -->
+            <!-- card evento 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +149,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Torneo de Pádel"
+                    android:text="@string/event_name_1"
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/text_body"
                     android:textStyle="bold" />
@@ -127,40 +158,54 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/spacing_small"
-                    android:text="Domingo 18 Octubre · 15:00"
+                    android:text="@string/event_date_1"
                     android:textColor="@color/text_secondary"
                     android:textSize="@dimen/text_body" />
 
                 <Button
-                    android:id="@+id/btn_info"
+                    android:id="@+id/btn_join_event_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_info_event" />
-
-                <Button
-                    android:id="@+id/btn_anotarme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onAnotarmeClick"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/white"
                     android:text="@string/btn_join_event" />
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mis Inscripciones Confirmadas"
-                android:textColor="@color/text_primary"
-                android:textSize="@dimen/text_subtitle"
-                android:textStyle="bold"
-                android:layout_marginBottom="@dimen/spacing_small" />
-
-            <!-- agrega las inscripciones dinamicamente  -->
+            <!-- card evento 2 -->
             <LinearLayout
-                android:id="@+id/container_inscripciones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_medium">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_name_2"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/text_body"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:text="@string/event_date_2"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_body" />
+
+                <Button
+                    android:id="@+id/btn_join_event_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primary"
+                    android:textColor="@color/white"
+                    android:text="@string/btn_join_event" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
