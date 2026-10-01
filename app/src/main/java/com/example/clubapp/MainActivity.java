@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,6 +31,16 @@ public class MainActivity extends AppCompatActivity {
         Button eventButton2 = findViewById(R.id.btn_join_event_2);
         eventButton2.setOnClickListener(v ->
                 onJoinEventClick(eventButton2, getString(R.string.event_name_2), getString(R.string.event_date_2))
+        );
+
+        findViewById(R.id.nav_activities).setOnClickListener(v ->
+                Toast.makeText(this, R.string.nav_coming_soon, Toast.LENGTH_SHORT).show()
+        );
+        findViewById(R.id.nav_events).setOnClickListener(v ->
+                Toast.makeText(this, R.string.nav_coming_soon, Toast.LENGTH_SHORT).show()
+        );
+        findViewById(R.id.nav_profile).setOnClickListener(v ->
+                Toast.makeText(this, R.string.nav_coming_soon, Toast.LENGTH_SHORT).show()
         );
     }
 

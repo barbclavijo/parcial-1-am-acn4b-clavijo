@@ -15,4 +15,9 @@
     <string name="btn_join_event">Anotarme</string>
     <string name="btn_joined">Inscripto</string>
     <string name="btn_cancel">Cancelar</string>
+    <string name="nav_home">Inicio</string>
+    <string name="nav_activities">Actividades</string>
+    <string name="nav_events">Eventos</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_coming_soon">Próximamente disponible</string>
 </resources>
