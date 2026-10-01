@@ -43,15 +43,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@color/white"
+                android:background="@drawable/bg_member_card"
                 android:padding="@dimen/spacing_medium"
                 android:layout_marginBottom="@dimen/spacing_medium">
 
-                <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:src="@drawable/ic_launcher_foreground"
-                    android:contentDescription="@string/member_label" />
+                <FrameLayout
+                    android:layout_width="120dp"
+                    android:layout_height="120dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:padding="2dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/member_photo"
+                        android:contentDescription="@string/member_name" />
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -62,17 +71,38 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/member_label"
-                        android:textColor="@color/accent_darker"
-                        android:textSize="@dimen/text_body" />
+                        android:text="@string/member_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_title"
+                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp">
+
+                        <View
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:background="@drawable/bg_dot_green" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="@string/member_label"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_body" />
+
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/member_name"
-                        android:textColor="@color/text_primary"
-                        android:textSize="@dimen/text_title"
-                        android:textStyle="bold" />
+                        android:text="@string/member_number"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_body" />
                 </LinearLayout>
             </LinearLayout>
 

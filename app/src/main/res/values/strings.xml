@@ -2,6 +2,7 @@
     <string name="app_name">ClubApp</string>
     <string name="club_subtitle">Club Deportivo</string>
     <string name="member_label">Socio Activo</string>
+    <string name="member_number">N° 4820</string>
     <string name="member_name">Mariano Benítez</string>
     <string name="section_activities">Mis Actividades</string>
     <string name="activity1_name">Fútbol +30</string>
